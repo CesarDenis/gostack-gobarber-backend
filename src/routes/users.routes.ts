@@ -4,9 +4,9 @@ import CreateUserService from '../services/CreateUserService';
 
 const usersRouter = Router();
 
-usersRouter.post('/', async (require, response) => {
+usersRouter.post('/', async (request, response) => {
   try {
-    const { name, email, password } = require.body;
+    const { name, email, password } = request.body;
 
     const createUser = new CreateUserService();
 

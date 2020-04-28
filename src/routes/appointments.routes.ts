@@ -11,16 +11,16 @@ const appointmentsRouter = Router();
 
 appointmentsRouter.use(ensureAuthenticated);
 
-appointmentsRouter.get('/', async (require, response) => {
+appointmentsRouter.get('/', async (request, response) => {
   const appointmentsRepository = getCustomRepository(AppointmentsRepository);
   const appointments = await appointmentsRepository.find();
 
   return response.json(appointments);
 });
 
-appointmentsRouter.post('/', async (require, response) => {
+appointmentsRouter.post('/', async (request, response) => {
   try {
-    const { provider_id, date } = require.body;
+    const { provider_id, date } = request.body;
 
     const parsedDate = parseISO(date);
 
